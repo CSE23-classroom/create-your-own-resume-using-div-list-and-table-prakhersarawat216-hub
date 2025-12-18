@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Express</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f6f7fb;
+    }
+
+    header {
+      background: linear-gradient(90deg, #ff5722, #ff9800);
+      color: white;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    header h1 { margin: 0; }
+    nav a {
+      color: white;
+      margin-left: 18px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .hero {
+      height: 360px;
+      overflow: hidden;
+      position: relative;
+    }
+    .slides {
+      display: flex;
+      width: 300%;
+      animation: slide 12s infinite;
+    }
+    .slides img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+    }
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      33% { transform: translateX(-100%); }
+      66% { transform: translateX(-200%); }
+      100% { transform: translateX(0); }
+    }
+    
+    .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 12px;
+    padding: 25px 35px;
+    text-align: center;
+    }
+
+    .hero-text h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    }
+
+    .hero-text p {
+     font-size: 18px;
+     }
+
+    .search-box {
+      margin: 30px auto;
+      max-width: 400px;
+      text-align: center;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 12px 18px;
+      border-radius: 25px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    .container { padding: 40px; }
+    h2.section-title {
+      margin-bottom: 25px;
+      color: #222;
+      font-size: 28px;
+    }
+
+    
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    .food-card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .food-card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+    .food-card h3 { margin: 14px 0 6px; }
+    .food-card p { color: #555; margin: 6px 0; }
+    .rating { color: #ff9800; }
+    .meta { font-size: 13px; color: #777; }
+    .food-card button {
+      margin: 18px 0 22px;
+      padding: 12px 26px;
+      border: none;
+      background: linear-gradient(90deg, #ff5722, #ff9800);
+      color: white;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 18px;
+    }
+
+    @media(max-width:1000px){ .food-grid{ grid-template-columns: repeat(2,1fr);} }
+    @media(max-width:600px){ .food-grid{ grid-template-columns: 1fr;} }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Food Express</h1>
+  
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Menu</a>
+    <a href="#">Offers</a>
+    <a href="#">Combos</a>
+    <a href="#">Cart</a>
+    <a href="#">Login</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="slider">
+    <img src="https://images.pexels.com/photos/1435907/pexels-photo-1435907.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Veg Food">
+    <img src="https://images.pexels.com/photos/3026808/pexels-photo-3026808.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Veg Combo">
+    <img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Veg Pasta">
+  </div>
+  <div class="hero-text">
+    <h2>Delicious Food, Delivered Fast</h2>
+    <p>Order From Your Nearest Best Restaurants & Cafes</p>
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.slider img');
+  let index = 0;
+  setInterval(() => {
+    slides.forEach(img => img.style.display = 'none');
+    slides[index].style.display = 'block';
+    index = (index + 1) % slides.length;
+  }, 3000);
+</script>
+
+<div class="search-box">
+  <input type="text" placeholder="Search food (visual only)">
+</div>
+
+<div class="container">
+
+  <h2 class="section-title">Best Veg Offers</h2>
+  <div class="food-grid">
+
+    <div class="food-card">
+      <img src="https://images.pexels.com/photos/1435907/pexels-photo-1435907.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Veg Pizza">
+      <h3>Veg Pizza</h3>
+      <p>$8.99</p>
+      <p class="rating">⭐⭐⭐⭐☆</p>
+      <p class="meta">⏱ 25 mins • 📍 3 km</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="food-card">
+      <img src="https://images.pexels.com/photos/3026808/pexels-photo-3026808.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Veg Combo">
+      <h3>Veg Meal Combo</h3>
+      <p>$11.99</p>
+      <p class="rating">⭐⭐⭐⭐⭐</p>
+      <p class="meta">⏱ 30 mins • 📍 4 km</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="food-card">
+      <img src="https://images.pexels.com/photos/1600711/pexels-photo-1600711.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sandwich">
+      <h3>Veg Sandwich</h3>
+      <p>$5.99</p>
+      <p class="rating">⭐⭐⭐⭐☆</p>
+      <p class="meta">⏱ 18 mins • 📍 2 km</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="food-card">
+      <img src="https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Fries">
+      <h3>French Fries</h3>
+      <p>$3.99</p>
+      <p class="rating">⭐⭐⭐⭐☆</p>
+      <p class="meta">⏱ 10 mins • 📍 1 km</p>
+      <button>Add to Cart</button>
+    </div>
+
+  </div>
+
+  <h2 class="section-title">Single Veg Items</h2>
+  <div class="food-grid">
+
+    <div class="food-card">
+      <img src="https://cdn.loveandlemons.com/wp-content/uploads/2021/04/green-salad.jpg" alt="Salad">
+      <h3>Fresh Green Salad</h3>
+      <p>$6.49</p>
+      <p class="rating">⭐⭐⭐⭐⭐</p>
+      <p class="meta">⏱ 15 mins • 📍 1.5 km</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="food-card">
+      <img src="https://jeyporedukaan.in/wp-content/uploads/2022/09/images-21.jpeg" alt="Veg Burger">
+      <h3>Veg Burger</h3>
+      <p>$7.49</p>
+      <p class="rating">⭐⭐⭐⭐☆</p>
+      <p class="meta">⏱ 22 mins • 📍 3 km</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="food-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWflwB7e_iDZLws_OqLt2djomUC4wn77nXRA&s" alt="Cheese Fries">
+      <h3>Veg Noodles</h3>
+      <p>$4.99</p>
+      <p class="rating">⭐⭐⭐⭐☆</p>
+      <p class="meta">⏱ 12 mins • 📍 1 km</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="food-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjvCsnnSwDM4SnUKmPHHd2w3ydTBtHiFg6-w&s" alt="Veg Pasta">
+      <h3>Veg Pasta</h3>
+      <p>$8.49</p>
+      <p class="rating">⭐⭐⭐⭐☆</p>
+      <p class="meta">⏱ 28 mins • 📍 4 km</p>
+      <button>Add to Cart</button>
+    </div>
+
+  </div>
+
+  <h2 class="section-title">Veg Combo Deals</h2>
+  <div class="food-grid">
+
+    <div class="food-card">
+      <img src="https://thumbs.dreamstime.com/b/pizza-slice-tomatoes-mozzarella-cheese-basil-glass-coke-ice-wooden-table-refreshing-soda-drink-tasty-lunch-385031175.jpg" alt="Combo 1">
+      <h3>Pizza + Drinks Combo</h3>
+      <p>$13.99</p>
+      <p class="rating">⭐⭐⭐⭐⭐</p>
+      <p class="meta">⏱ 35 mins • 📍 5 km</p>
+      <button>Add Combo</button>
+    </div>
+
+    <div class="food-card">
+      <img src="https://thumbs.dreamstime.com/b/classic-fast-food-meal-juicy-burger-crispy-fries-refreshing-soda-rustic-wooden-background-ideal-advertising-320635660.jpg" alt="Combo 2">
+      <h3>Burger + Fries Combo</h3>
+      <p>$12.49</p>
+      <p class="rating">⭐⭐⭐⭐☆</p>
+      <p class="meta">⏱ 30 mins • 📍 4 km</p>
+      <button>Add Combo</button>
+    </div>
+
+    <div class="food-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR06INUU2fV1rVCV0-ZvNyB2bHi_ZG8AK2P1vgJsYCbxrIV3BS9D0-hRKMfHGp4QVPZtPs&usqp=CAU" alt="Combo 3">
+      <h3>Mega Combo For 2</h3>
+      <p>$10.99</p>
+      <p class="rating">⭐⭐⭐⭐☆</p>
+      <p class="meta">⏱ 25 mins • 📍 3 km</p>
+      <button>Add Combo</button>
+    </div>
+
+    <div class="food-card">
+      <img src="https://i.ytimg.com/vi/hsaiTlODb_M/maxresdefault.jpg" alt="Combo 4">
+      <h3>Family Combo</h3>
+      <p>$24.99</p>
+      <p class="rating">⭐⭐⭐⭐⭐</p>
+      <p class="meta">⏱ 40 mins • 📍 6 km</p>
+      <button>Add Combo</button>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2025 Food Express | Pure Veg & Fast Food</p>
+  <p>Made By Prakher Sarawat</p>
+</footer>
+
+</body>
+</html>
