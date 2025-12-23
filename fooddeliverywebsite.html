@@ -61,7 +61,7 @@
     color: white;
     background: rgba(0, 0, 0, 0.55);
     border-radius: 12px;
-    padding: 25px 35px;
+    padding: 35px;
     text-align: center;
     }
 
@@ -128,10 +128,25 @@
     }
 
     footer {
-      background: #111;
+      background: black;
       color: white;
       text-align: center;
+      padding: 25px;
+    }
+    .bottom{
+
+      color: white;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      justify-content: space-between;
       padding: 18px;
+    }
+    .P1 a{
+      text-decoration: none;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 5px;
     }
 
     @media(max-width:1000px){ .food-grid{ grid-template-columns: repeat(2,1fr);} }
@@ -309,6 +324,35 @@
 <footer>
   <p>© 2025 Food Express | Pure Veg & Fast Food</p>
   <p>Made By Prakher Sarawat</p>
+  <div class="bottom"> 
+    <div class="P1">
+      <h2>Contact Us</h2>
+      <a href="#"></a>
+      
+        <a>415-201-6357</a>
+          <a href="#">hello@foodexpress.com</a>
+    </div>
+    <div class="P1">
+      <h2>Account</h2>
+      <a>Create Account</a>
+      <a>Sign in</a>
+      <a>iDS app</a>
+      <a>Android app</a>
+      </div>
+      <div class="P1">
+        <h2>Company</h2>
+        <a>about FoodExpress</a>
+        <a>for Business</a>
+        <a>Cooking partners</a>
+        <a>Careers</a>
+    </div>
+    <div class="P1">
+      <h2>Resources</h2>
+      <a>Recipe directory</a>
+      <a>Help Center</a>
+      <a>Privacy & terms</a>
+    </div>
+  </div>
 </footer>
 
 </body>
